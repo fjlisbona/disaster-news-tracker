@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Mundial de Catástrofes - ML Clasificado</title>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3 sidebar">
+                <div class="sidebar-content">
+                    <h1 class="text-center mb-4">
+                        <i class="fas fa-globe-americas text-danger"></i>
+                        Mapa de Catástrofes
+                        <small class="d-block text-muted" style="font-size: 0.6em;">Tiempo Real</small>
+                    </h1>
+                    
+                    <!-- Real-time monitoring controls -->
+                    <div class="monitoring-controls mb-4">
+                        <h5><i class="fas fa-broadcast-tower"></i> Monitoreo en Tiempo Real</h5>
+                        <div class="d-grid gap-2">
+                            <button id="toggleMonitoring" class="btn btn-success btn-sm">
+                                <i class="fas fa-play"></i> Iniciar Monitoreo
+                            </button>
+                            <button id="stopMonitoring" class="btn btn-danger btn-sm" style="display: none;">
+                                <i class="fas fa-stop"></i> Detener Monitoreo
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="filters mb-4">
+                        <h5><i class="fas fa-filter"></i> Filtros</h5>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="filter-wars" checked>
+                            <label class="form-check-label" for="filter-wars">
+                                <i class="fas fa-crosshairs text-danger"></i> Guerras
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="filter-natural" checked>
+                            <label class="form-check-label" for="filter-natural">
+                                <i class="fas fa-volcano text-orange"></i> Desastres Naturales
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="filter-pandemics" checked>
+                            <label class="form-check-label" for="filter-pandemics">
+                                <i class="fas fa-virus text-purple"></i> Pandemias
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="filter-accidents" checked>
+                            <label class="form-check-label" for="filter-accidents">
+                                <i class="fas fa-exclamation-triangle text-yellow"></i> Accidentes
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="stats mb-4">
+                        <h5><i class="fas fa-chart-bar"></i> Estadísticas</h5>
+                        <div class="stat-item">
+                            <span class="stat-label">Total de eventos:</span>
+                            <span class="stat-value" id="total-events">0</span>
+                            <span class="stat-max text-muted">/15</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Guerras activas:</span>
+                            <span class="stat-value text-danger" id="wars-count">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Desastres naturales:</span>
+                            <span class="stat-value text-orange" id="natural-count">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Pandemias:</span>
+                            <span class="stat-value text-purple" id="pandemics-count">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Nuevos eventos hoy:</span>
+                            <span class="stat-value text-success" id="new-events-today">0</span>
+                        </div>
+                    </div>
+                    
+                    <div class="map-controls mb-4">
+                        <h5><i class="fas fa-map"></i> Controles del Mapa</h5>
+                        <button class="btn btn-sm btn-outline-primary mb-2 w-100" onclick="resetMapView()">
+                            <i class="fas fa-home"></i> Vista Inicial
+                        </button>
+                        <button class="btn btn-sm btn-outline-success mb-2 w-100" onclick="fitAllMarkers()">
+                            <i class="fas fa-expand"></i> Ver Todos los Marcadores
+                        </button>
+                        <button class="btn btn-sm btn-outline-warning mb-2 w-100" onclick="clearAllMarkers()">
+                            <i class="fas fa-trash"></i> Limpiar Mapa
+                        </button>
+                    </div>
+                    
+                    <div class="last-updated">
+                        <small class="text-muted">
+                            <i class="fas fa-clock"></i> Última actualización: 
+                            <span id="last-update">Cargando...</span>
+                        </small>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Map Container -->
+            <div class="col-md-9 map-container">
+                <div id="map"></div>
+                
+                <!-- Loading overlay -->
+                <div id="loading-overlay" class="loading-overlay">
+                    <div class="spinner-border text-light" role="status">
+                        <span class="visually-hidden">Cargando...</span>
+                    </div>
+                    <p class="text-light mt-2">Cargando datos de catástrofes...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for event details -->
+    <div class="modal fade" id="eventModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="eventModalTitle">Detalles del Evento</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="eventModalBody">
+                    <!-- Content will be dynamically loaded -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <a href="#" class="btn btn-primary" id="eventModalLink" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> Ver más información
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <!-- ML News Classifier (CARGAR PRIMERO) -->
+    <script src="ml-news-classifier.js"></script>
+    
+    <!-- Smart Notification System -->
+    <script src="smart-notification-system.js"></script>
+    
+    <!-- Integrated Monitoring System -->
+    <script src="integrated-monitoring-system.js"></script>
+    
+    <!-- Main Application Script (CARGAR AL FINAL) -->
+    <script src="script.js"></script>
+    <!-- Bootstrap JS (necesario para modales) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 

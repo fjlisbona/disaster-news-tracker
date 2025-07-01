@@ -1,0 +1,1152 @@
+/* Global Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+
+.container-fluid {
+    padding: 0;
+    height: 100vh;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    height: 100vh;
+    overflow-y: auto;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-content {
+    padding: 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Filters */
+.filters h5 {
+    color: #34495e;
+    font-weight: 600;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #e74c3c;
+    padding-bottom: 8px;
+}
+
+.form-check {
+    margin-bottom: 12px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.form-check:hover {
+    background-color: rgba(231, 76, 60, 0.1);
+}
+
+.form-check-input:checked {
+    background-color: #e74c3c;
+    border-color: #e74c3c;
+}
+
+.form-check-label {
+    font-weight: 500;
+    color: #2c3e50;
+    cursor: pointer;
+}
+
+/* Stats */
+.stats h5 {
+    color: #34495e;
+    font-weight: 600;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 8px;
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.stat-label {
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+.stat-value {
+    font-weight: 700;
+    font-size: 1.1em;
+}
+
+/* Map Controls */
+.map-controls h5 {
+    color: #34495e;
+    font-weight: 600;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #27ae60;
+    padding-bottom: 8px;
+}
+
+.map-controls .btn {
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+.map-controls .btn:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Last Updated */
+.last-updated {
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Map Container */
+.map-container {
+    position: relative;
+    height: 100vh;
+    padding: 0;
+}
+
+#map {
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+}
+
+/* Loading Overlay */
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+/* Custom Marker Styles */
+.custom-marker {
+    border-radius: 50%;
+    border: 3px solid white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.custom-marker:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.marker-war {
+    background-color: #e74c3c;
+}
+
+.marker-natural {
+    background-color: #f39c12;
+}
+
+.marker-pandemic {
+    background-color: #9b59b6;
+}
+
+.marker-accident {
+    background-color: #f1c40f;
+}
+
+/* Popup Styles */
+.leaflet-popup-content-wrapper {
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.leaflet-popup-content {
+    margin: 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.event-popup {
+    min-width: 280px;
+    max-width: 350px;
+}
+
+.event-title {
+    font-weight: 700;
+    color: #2c3e50;
+    font-size: 1.1em;
+    margin-bottom: 8px;
+    line-height: 1.3;
+}
+
+.event-type {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.event-type.war {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.event-type.natural {
+    background-color: #f39c12;
+    color: white;
+}
+
+.event-type.pandemic {
+    background-color: #9b59b6;
+    color: white;
+}
+
+.event-type.accident {
+    background-color: #f1c40f;
+    color: #2c3e50;
+}
+
+.event-description {
+    color: #34495e;
+    line-height: 1.5;
+    margin-bottom: 8px;
+}
+
+.event-date {
+    color: #7f8c8d;
+    font-size: 0.9em;
+    font-style: italic;
+}
+
+/* News Links Styles */
+.news-links {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding-top: 10px;
+}
+
+.news-links .btn {
+    font-size: 0.8em;
+    padding: 4px 8px;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+.news-links .btn:hover {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.news-links .btn-outline-primary:hover {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: white;
+}
+
+/* Modal News Cards */
+.modal-body .card {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    height: 100%;
+}
+
+.modal-body .card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-color: #007bff;
+}
+
+.modal-body .card-title {
+    font-size: 0.9em;
+    font-weight: 600;
+    color: #007bff;
+}
+
+.modal-body .card-text {
+    color: #6c757d;
+    font-size: 0.85em;
+    line-height: 1.3;
+}
+
+.modal-body .card .btn {
+    font-size: 0.8em;
+    padding: 4px 12px;
+    border-radius: 6px;
+}
+
+/* Event Details Button */
+.event-popup .btn-info {
+    font-size: 0.85em;
+    padding: 6px 12px;
+    border-radius: 6px;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.event-popup .btn-info:hover {
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Modal Styles */
+.modal-content {
+    border-radius: 15px;
+    border: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 15px 15px 0 0;
+}
+
+.modal-title {
+    font-weight: 700;
+}
+
+/* Info Control Panel */
+.info-control {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin: 10px;
+}
+
+.info-panel {
+    padding: 15px;
+    min-width: 200px;
+}
+
+.info-panel h4 {
+    color: #2c3e50;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 5px;
+}
+
+.info-panel p {
+    margin: 5px 0;
+    font-size: 0.9em;
+    color: #34495e;
+}
+
+.info-panel strong {
+    color: #2c3e50;
+}
+
+/* Leaflet Control Enhancements */
+.leaflet-control-layers {
+    border-radius: 12px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+.leaflet-control-layers-toggle {
+    border-radius: 8px !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+.leaflet-control-layers-expanded {
+    padding: 15px !important;
+    min-width: 200px !important;
+}
+
+.leaflet-control-layers label {
+    font-weight: 500 !important;
+    color: #2c3e50 !important;
+    margin-bottom: 8px !important;
+}
+
+/* Geocoder Control */
+.leaflet-control-geocoder {
+    border-radius: 12px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+.leaflet-control-geocoder-form input {
+    border-radius: 8px !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    padding: 8px 12px !important;
+    font-size: 0.9em !important;
+}
+
+.leaflet-control-geocoder-alternatives {
+    border-radius: 8px !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+.leaflet-control-geocoder-alternatives a {
+    color: #2c3e50 !important;
+    font-weight: 500 !important;
+    padding: 8px 12px !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+}
+
+.leaflet-control-geocoder-alternatives a:hover {
+    background: rgba(52, 152, 219, 0.1) !important;
+    color: #3498db !important;
+}
+
+/* Measure Control */
+.leaflet-measure-control {
+    border-radius: 12px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+.leaflet-measure-control .leaflet-control {
+    border-radius: 8px !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+/* MiniMap Control */
+.leaflet-control-minimap {
+    border-radius: 12px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+/* Fullscreen Control */
+.leaflet-control-fullscreen {
+    border-radius: 12px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+/* Coordinates Control */
+.leaflet-control-coordinates {
+    border-radius: 12px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+    padding: 8px 12px !important;
+    font-size: 0.9em !important;
+    font-weight: 500 !important;
+    color: #2c3e50 !important;
+}
+
+/* Scale Control */
+.leaflet-control-scale {
+    border-radius: 12px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+    padding: 8px 12px !important;
+}
+
+.leaflet-control-scale-line {
+    border-radius: 8px !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    color: #2c3e50 !important;
+    font-weight: 500 !important;
+}
+
+/* Print Control */
+.leaflet-control-browser-print {
+    border-radius: 12px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .sidebar {
+        height: auto;
+        max-height: 40vh;
+    }
+    
+    .map-container {
+        height: 60vh;
+    }
+    
+    .sidebar-content {
+        padding: 15px;
+    }
+    
+    .sidebar h1 {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+    }
+    
+    .info-panel {
+        min-width: 150px;
+        padding: 10px;
+    }
+    
+    .info-panel h4 {
+        font-size: 0.9rem;
+    }
+    
+    .info-panel p {
+        font-size: 0.8em;
+    }
+    
+    .news-links .btn {
+        font-size: 0.75em;
+        padding: 3px 6px;
+        margin-bottom: 3px;
+    }
+    
+    .modal-body .card {
+        margin-bottom: 10px;
+    }
+    
+    .event-popup {
+        min-width: 250px;
+        max-width: 300px;
+    }
+}
+
+/* Animation for markers */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.marker-critical {
+    animation: pulse 2s infinite;
+}
+
+/* Custom scrollbar */
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: rgba(231, 76, 60, 0.5);
+    border-radius: 3px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: rgba(231, 76, 60, 0.7);
+}
+
+/* Fullscreen styles */
+.leaflet-container.leaflet-fullscreen-on {
+    z-index: 9999 !important;
+}
+
+/* Print styles */
+@media print {
+    .sidebar {
+        display: none !important;
+    }
+    
+    .map-container {
+        width: 100% !important;
+        height: 100vh !important;
+    }
+    
+    .leaflet-control {
+        display: none !important;
+    }
+    
+    .leaflet-control-scale {
+        display: block !important;
+    }
+}
+
+/* Estilos adicionales para monitoreo en tiempo real */
+.monitoring-controls {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 12px;
+    padding: 15px;
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.monitoring-controls h5 {
+    color: white;
+    margin-bottom: 10px;
+}
+
+.monitoring-controls .btn {
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.monitoring-controls .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.stat-max {
+    font-size: 0.8em;
+}
+
+/* Animaciones para marcadores nuevos */
+@keyframes markerAppear {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.3);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.marker-new {
+    animation: markerAppear 1s ease-out;
+}
+
+/* Efectos de pulso para eventos críticos */
+@keyframes criticalPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(220, 53, 69, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(220, 53, 69, 0);
+    }
+}
+
+.marker-critical {
+    animation: criticalPulse 2s infinite;
+}
+
+/* Estilos para alertas críticas */
+.critical-alert {
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    animation: criticalSlideIn 0.5s ease-out;
+}
+
+@keyframes criticalSlideIn {
+    from {
+        transform: translateX(-50%) translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Indicador de estado de conexión */
+#connection-status {
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+#connection-status:hover {
+    transform: scale(1.05);
+}
+
+/* Mejoras visuales para estadísticas */
+.stats .stat-item {
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.stats .stat-item:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+}
+
+.stats .stat-item:last-child {
+    border-bottom: none;
+}
+
+/* Efectos hover mejorados para controles */
+.map-controls .btn {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.map-controls .btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.map-controls .btn:hover::before {
+    left: 100%;
+}
+
+.map-controls .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive design para dispositivos móviles */
+@media (max-width: 768px) {
+    .monitoring-controls {
+        padding: 10px;
+    }
+    
+    .monitoring-controls h5 {
+        font-size: 1rem;
+    }
+    
+    #connection-status {
+        bottom: 10px;
+        right: 10px;
+        min-width: 150px;
+        font-size: 11px;
+    }
+    
+    .critical-alert {
+        min-width: 300px;
+        max-width: 90vw;
+    }
+}
+
+/* Efectos de loading mejorados */
+.loading-overlay {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+}
+
+.loading-overlay .spinner-border {
+    width: 3rem;
+    height: 3rem;
+}
+
+/* Tooltips personalizados */
+.custom-tooltip {
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    max-width: 200px;
+    backdrop-filter: blur(10px);
+}
+
+/* Mejoras para el modal de eventos */
+.modal-content {
+    border-radius: 15px;
+    border: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 15px 15px 0 0;
+}
+
+.modal-body {
+    padding: 25px;
+}
+
+/* Animaciones suaves para notificaciones */
+.notification-toast {
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Estilos para popups de marcadores */
+.disaster-popup {
+    min-width: 250px;
+    max-width: 350px;
+}
+
+.disaster-popup h6 {
+    color: #333;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #eee;
+}
+
+.disaster-popup .news-links a {
+    margin: 2px;
+    font-size: 11px;
+    padding: 4px 8px;
+}
+
+/* Efectos de hover para filtros */
+.filters .form-check {
+    padding: 8px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+
+.filters .form-check:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.filters .form-check-input:checked {
+    background-color: #667eea;
+    border-color: #667eea;
+}
+
+/* Indicadores de estado mejorados */
+.status-indicator {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 6px;
+    animation: statusPulse 2s infinite;
+}
+
+.status-indicator.active {
+    background-color: #28a745;
+}
+
+.status-indicator.inactive {
+    background-color: #6c757d;
+}
+
+.status-indicator.error {
+    background-color: #dc3545;
+}
+
+@keyframes statusPulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+/* Sistema de notificaciones inteligentes */
+.smart-notifications-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 350px;
+    max-height: 80vh;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    z-index: 10000;
+    display: none;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.notifications-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+}
+
+.notifications-header h4 {
+    margin: 0;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.clear-btn {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.clear-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.notifications-list {
+    max-height: calc(80vh - 60px);
+    overflow-y: auto;
+    padding: 8px;
+}
+
+.smart-notification {
+    background: white;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.3s ease;
+    border-left: 4px solid #ddd;
+}
+
+.smart-notification.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.smart-notification.hiding {
+    opacity: 0;
+    transform: translateX(100%);
+}
+
+.smart-notification.new {
+    border-left-color: #4CAF50;
+    background: linear-gradient(135deg, #f8fff8 0%, #ffffff 100%);
+}
+
+.smart-notification.updated {
+    border-left-color: #2196F3;
+    background: linear-gradient(135deg, #f0f8ff 0%, #ffffff 100%);
+}
+
+.notification-header {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px 8px;
+    gap: 8px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.event-icon {
+    font-size: 16px;
+}
+
+.change-type {
+    font-size: 12px;
+}
+
+.event-type {
+    font-size: 11px;
+    background: rgba(0, 0, 0, 0.1);
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-weight: 500;
+}
+
+.time-ago {
+    font-size: 10px;
+    color: #666;
+    margin-left: auto;
+}
+
+.close-notification {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    color: #999;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.close-notification:hover {
+    background: #f0f0f0;
+    color: #333;
+}
+
+.notification-content {
+    padding: 0 16px 12px;
+}
+
+.event-title {
+    margin: 8px 0 4px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #333;
+    line-height: 1.3;
+}
+
+.event-location {
+    margin: 4px 0 8px;
+    font-size: 11px;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.changes-list {
+    margin: 8px 0;
+    background: #f8f9fa;
+    border-radius: 6px;
+    padding: 8px;
+}
+
+.change-item {
+    font-size: 11px;
+    color: #555;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 4px;
+}
+
+.change-item:last-child {
+    margin-bottom: 0;
+}
+
+.change-item i {
+    color: #2196F3;
+    font-size: 10px;
+}
+
+.notification-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.view-on-map-btn,
+.view-news-btn {
+    flex: 1;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+.view-on-map-btn:hover,
+.view-news-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.view-news-btn {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.view-news-btn:hover {
+    box-shadow: 0 4px 12px rgba(245, 87, 108, 0.4);
+}
+
+/* Scrollbar personalizado para notificaciones */
+.notifications-list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.notifications-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 2px;
+}
+
+.notifications-list::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 2px;
+}
+
+.notifications-list::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* Animaciones */
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutRight {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .smart-notifications-container {
+        width: calc(100vw - 40px);
+        right: 20px;
+        left: 20px;
+        max-width: none;
+    }
+    
+    .notification-actions {
+        flex-direction: column;
+    }
+    
+    .view-on-map-btn,
+    .view-news-btn {
+        flex: none;
+    }
+} 
