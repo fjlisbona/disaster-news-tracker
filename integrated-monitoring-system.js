@@ -645,7 +645,7 @@ class IntegratedMonitoringSystem {
     // ACTUALIZAR CONTADOR DE EVENTOS NUEVOS
     updateNewEventsCounter() {
         this.newEventsToday++;
-        const counter = document.getElementById('new-events-counter');
+        const counter = document.getElementById('new-events-today');
         if (counter) {
             counter.textContent = this.newEventsToday;
         }
